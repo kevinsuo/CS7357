@@ -21,16 +21,16 @@ def load_dataset():
 
 
 
-# 导入数据，“_orig”代表这里是原始数据，我们还要进一步处理才能使用：
+#Import data, "_orig" represents the original data here, we need to further process it before we can use it:
 train_set_x_orig, train_set_y, test_set_x_orig, test_set_y, classes = load_dataset()
-#由数据集获取一些基本参数，如训练样本数m，图片大小：
-m_train = train_set_x_orig.shape[0]  #训练集大小209
-m_test = test_set_x_orig.shape[0]    #测试集大小50
-num_px = train_set_x_orig.shape[1]  #图片宽度64，大小是64×64
-#将图片数据向量化（扁平化）：
+#Get some basic parameters from the data set, such as the number of training samples m, and the size of the picture:
+m_train = train_set_x_orig.shape[0]  #Training set size 209
+m_test = test_set_x_orig.shape[0]    #Test set size 50
+num_px = train_set_x_orig.shape[1]  #Picture width 64, size is 64×64
+#Vectorize image data (flatten):
 train_set_x_flatten = train_set_x_orig.reshape(train_set_x_orig.shape[0],-1).T
 test_set_x_flatten = test_set_x_orig.reshape(test_set_x_orig.shape[0],-1).T
-#对数据进行标准化：
+#Standardize the data:
 train_set_x = train_set_x_flatten/255.
 test_set_x = test_set_x_flatten/255.
 print(train_set_x.shape)
